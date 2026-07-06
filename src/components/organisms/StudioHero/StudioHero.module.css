@@ -305,25 +305,32 @@
     transform: none;
   }
 
+  /* Disable overflow clip so Asimovian tall glyphs are fully visible */
+  .wordMaskAuto,
+  .wordMaskNova,
+  .wordMaskAi {
+    overflow: visible;
+  }
+
   .wordMaskAuto {
     top: 3rem;
-    left: 42%;
+    left: 20%;
     width: 54%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskNova {
     left: 5%;
     bottom: 8rem;
     width: 80%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskAi {
     right: 8%;
     bottom: 2.5rem;
     width: 25%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskAuto,
@@ -336,10 +343,19 @@
   }
 
   .wordAuto,
-  .wordNova,
+  .wordNova {
+    font-size: inherit;
+    line-height: 1;
+    font-family: 'Asimovian', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.085em;
+  }
+
   .wordAi {
     font-size: inherit;
-    line-height: 0.82;
+    line-height: 1;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 300;
@@ -445,25 +461,32 @@
     min-height: 24rem;
   }
 
+  /* Disable overflow clip so Asimovian tall glyphs are fully visible */
+  .wordMaskAuto,
+  .wordMaskNova,
+  .wordMaskAi {
+    overflow: visible;
+  }
+
   .wordMaskAuto {
     top: 2rem;
-    left: 42%;
+    left: 20%;
     width: 54%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskNova {
     left: 4%;
     bottom: 6.5rem;
     width: 80%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskAi {
     right: 8%;
     bottom: 2rem;
     width: 28%;
-    height: 1.3em;
+    height: 1.2em;
   }
 
   .wordMaskAuto,
@@ -476,10 +499,19 @@
   }
 
   .wordAuto,
-  .wordNova,
+  .wordNova {
+    font-size: inherit;
+    line-height: 1;
+    font-family: 'Asimovian', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.085em;
+  }
+
   .wordAi {
     font-size: inherit;
-    line-height: 0.82;
+    line-height: 1;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 300;

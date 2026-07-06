@@ -12,9 +12,8 @@ export function StudioHero() {
   useEffect(() => {
     if (!rootRef.current || prefersReducedMotion) return;
 
-    // Mouse move parallax handler
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
+    // Shared parallax applicator — used by both mouse and touch handlers
+    const applyParallax = (clientX: number, clientY: number) => {
       const xPos = (clientX / window.innerWidth - 0.5) * 2;
       const yPos = (clientY / window.innerHeight - 0.5) * 2;
 
@@ -49,6 +48,12 @@ export function StudioHero() {
         ease: 'power2.out',
         overwrite: 'auto',
       });
+    };
+
+    // Unified pointer handler — fires on mouse hover (desktop) and
+    // finger drag (mobile/tablet). Never fires on taps or clicks.
+    const handlePointerMove = (e: PointerEvent) => {
+      applyParallax(e.clientX, e.clientY);
     };
 
     const context = gsap.context(() => {
@@ -113,10 +118,10 @@ export function StudioHero() {
       });
     }, rootRef);
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('pointermove', handlePointerMove);
       context.revert();
       ScrollTrigger.refresh();
     };
