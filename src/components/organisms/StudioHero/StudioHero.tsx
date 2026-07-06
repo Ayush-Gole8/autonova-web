@@ -138,13 +138,13 @@ export function StudioHero() {
       <div className={styles.headlineStage} data-mouse-parallax="letters" aria-hidden="true">
         <div className={styles.wordMaskAuto}>
           <p className={styles.wordAuto} data-hero-line>
-            AUTO
+            Auto
           </p>
         </div>
 
         <div className={styles.wordMaskNova}>
           <p className={styles.wordNova} data-hero-line>
-            NOVA
+            Nova
           </p>
         </div>
 
@@ -178,15 +178,17 @@ export function StudioHero() {
         </a>
       </div>
 
-      <div className={styles.homeWheel} data-hero-ornament data-mouse-parallax="bg-slow" aria-hidden="true">
-        <span className={styles.sunCore} />
-        {Array.from({ length: 36 }).map((_, index) => (
-          <span
-            key={index}
-            className={styles.sunRay}
-            style={{ ['--ray-rotation' as string]: `${index * 10}deg` }}
-          />
-        ))}
+      <div className={styles.homeWheelContainer} data-hero-ornament data-mouse-parallax="bg-slow" aria-hidden="true">
+        <div className={styles.homeWheel}>
+          <span className={styles.sunCore} />
+          {Array.from({ length: 36 }).map((_, index) => (
+            <span
+              key={index}
+              className={styles.sunRay}
+              style={{ ['--ray-rotation' as string]: `${index * 10}deg` }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

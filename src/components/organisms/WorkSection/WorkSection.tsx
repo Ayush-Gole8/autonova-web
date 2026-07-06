@@ -25,6 +25,14 @@ const PROJECTS: Project[] = [
     result: 'Fully responsive site & enhanced brand engagement',
   },
   {
+    title: 'Naya Dharavi',
+    category: 'Community Portal & Web Platform',
+    description:
+      'Designed and engineered a high-performance community platform, featuring interactive maps and business directories, to boost local merchant visibility and preserve cultural narratives.',
+    tech: ['Next.js', 'React', 'Mapbox GL', 'Vanilla CSS', 'UI/UX Design'],
+    result: 'Registry for 500+ local micro-businesses & enhanced reach',
+  },
+  {
     title: 'Bhumee Exports',
     category: 'Product Catalog & Business Website',
     description:
