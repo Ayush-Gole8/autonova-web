@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { TextRoll } from '@/components/atoms/TextRoll';
+import { ExternalLink } from 'lucide-react';
 import styles from './WorkSection.module.css';
 
 interface Project {
@@ -12,7 +13,7 @@ interface Project {
   description: string;
   tech: string[];
   result: string;
-  url?: string;
+  url: string;
 }
 
 const PROJECTS: Project[] = [
@@ -23,6 +24,7 @@ const PROJECTS: Project[] = [
       'Redesigned and rebuilt a modern, fully responsive web experience and integrated social/community outreach strategies to revitalize Art Heart\'s digital presence.',
     tech: ['Next.js', 'React', 'Framer Motion', 'Vanilla CSS', 'Brand Support'],
     result: 'Fully responsive site & enhanced brand engagement',
+    url: 'https://artheart.in',
   },
   {
     title: 'Naya Dharavi',
@@ -31,6 +33,7 @@ const PROJECTS: Project[] = [
       'Designed and engineered a high-performance community platform, featuring interactive maps and business directories, to boost local merchant visibility and preserve cultural narratives.',
     tech: ['Next.js', 'React', 'Mapbox GL', 'Vanilla CSS', 'UI/UX Design'],
     result: 'Registry for 500+ local micro-businesses & enhanced reach',
+    url: 'https://re-dharavi.vercel.app/',
   },
   {
     title: 'Bhumee Exports',
@@ -39,22 +42,7 @@ const PROJECTS: Project[] = [
       'Created a professional digital storefront, online product catalog, and secure payment workflows to elevate Bhumee Exports\' global business footprint.',
     tech: ['Next.js', 'React', 'Payment Integration', 'Tailwind CSS', 'UI/UX Design'],
     result: 'Centralized catalog & streamlined payment flow',
-  },
-  {
-    title: 'Meridian Finance',
-    category: 'SaaS Dashboard & Web Application',
-    description:
-      'Engineered a real-time financial analytics dashboard with interactive data visualizations, role-based access, and secure API integrations for institutional clients.',
-    tech: ['Next.js', 'TypeScript', 'D3.js', 'Supabase', 'Stripe'],
-    result: '3x faster data insights & 40% user growth',
-  },
-  {
-    title: 'Neon Studio',
-    category: 'Creative Agency Portfolio',
-    description:
-      'Crafted an immersive portfolio experience with scroll-driven animations, WebGL transitions, and a custom CMS for a boutique creative studio expanding internationally.',
-    tech: ['Next.js', 'GSAP', 'Three.js', 'Prismic CMS', 'Vercel'],
-    result: 'Award-nominated design & 2x client inquiries',
+    url: 'https://bhumeeexports.com/',
   },
 ];
 
@@ -180,38 +168,43 @@ export function WorkSection() {
 
       <div className={styles.caseList}>
         {PROJECTS.map((project, index) => (
-          <article key={project.title} className={`${styles.caseCard} textRollTrigger`} data-case-card>
-            <div className={styles.caseHeader}>
-              <span className={styles.caseIndex}>{index + 1}</span>
-              <div className={styles.caseMeta}>
-                <span className={styles.caseCategory}>{project.category}</span>
+          <a
+            key={project.title}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.caseCard} textRollTrigger`}
+            data-case-card
+          >
+            <div className={styles.cardInner}>
+              <div className={styles.caseHeader}>
+                <span className={styles.caseIndex}>{index + 1}</span>
+                <div className={styles.caseMeta}>
+                  <span className={styles.caseCategory}>{project.category}</span>
+                </div>
               </div>
+
+              <h3 className={styles.caseTitle}>
+                <TextRoll text={project.title} />
+                <ExternalLink className={styles.externalIcon} size={20} />
+              </h3>
+              <p className={styles.caseDescription}>{project.description}</p>
+
+              <div className={styles.techTags}>
+                {project.tech.map((t) => (
+                  <span key={t} className={styles.techTag}>{t}</span>
+                ))}
+              </div>
+
+              {project.url && (
+                <span className={styles.caseLink}>
+                  Explore <span className={styles.arrow}>→</span>
+                </span>
+              )}
+
+              <div className={styles.caseResult}>{project.result}</div>
             </div>
-
-            <h3 className={styles.caseTitle}>
-              <TextRoll text={project.title} />
-            </h3>
-            <p className={styles.caseDescription}>{project.description}</p>
-
-            <div className={styles.techTags}>
-              {project.tech.map((t) => (
-                <span key={t} className={styles.techTag}>{t}</span>
-              ))}
-            </div>
-
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.caseLink}
-              >
-                Explore →
-              </a>
-            )}
-
-            <div className={styles.caseResult}>{project.result}</div>
-          </article>
+          </a>
         ))}
       </div>
     </section>

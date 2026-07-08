@@ -139,11 +139,35 @@
   border-radius: var(--radius-lg);
   background: var(--color-bg-subtle);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .caseCard:hover {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-lg);
+}
+
+.cardInner {
+  transition: transform var(--transition-base);
+}
+
+.caseCard:hover .cardInner {
+  transform: translateY(-2px);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.caseCard:hover .arrow {
+  transform: translateX(4px);
+}
+
+.caseCard:hover .caseLink {
+  color: var(--color-accent-lime);
 }
 
 .caseHeader {
@@ -186,6 +210,21 @@
   letter-spacing: -0.03em;
   color: var(--color-editorial);
   margin-bottom: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.externalIcon {
+  opacity: 0.3;
+  color: var(--color-fg-secondary);
+  transition: opacity var(--transition-base), transform var(--transition-base), color var(--transition-base);
+}
+
+.caseCard:hover .externalIcon {
+  opacity: 1;
+  color: var(--color-accent-lime);
+  transform: translate(2px, -2px);
 }
 
 .caseDescription {
